@@ -3,6 +3,10 @@
 All notable changes to `@pogly/spacetimedb-predict` are listed here. It follows [semantic versioning](https://semver.org/).
 While it's 0.x and experimental, minor versions may change the API.
 
+## 0.1.1 (2026-10-11)
+
+- First release published from CI through npm trusted publishing, with provenance. No code changes.
+
 ## 0.1.0 (2026-10-11)
 
 First release.

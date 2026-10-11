@@ -1,6 +1,6 @@
 {
   "name": "@pogly/spacetimedb-predict",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Optimistic updates / client-side prediction for SpacetimeDB clients: predictions layered over the client cache, rebased on every server change, rolled back when the server says no. React hooks, and a ctx.db shim to run a TS module's own reducer logic as the prediction. Experimental.",
   "license": "MIT",
   "type": "module",
