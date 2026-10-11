@@ -1,0 +1,10 @@
+[package]
+name = "predict-tests-client"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+spacetimedb-sdk = "2.11"
+spacetimedb-predict = { path = "../spacetimedb-predict" }
+task_logic = { path = "../../demo/rust/logic" }

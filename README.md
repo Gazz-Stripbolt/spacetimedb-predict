@@ -2,12 +2,12 @@
 
 # ⚡ Spacetime Predict
 
-**Optimistic updates and client-side prediction for SpacetimeDB clients.**
+**Optimistic updates and client-side prediction for SpacetimeDB clients: TypeScript (React), C# (Unity, Godot) and Rust (Bevy).**
 
 Call a reducer and the UI changes **at once**. The prediction is re-run on top of every server change until the
 reply comes back, then the server's real rows take over without a flicker. If the server says no, the prediction
-rolls back. With a TypeScript module you can **write the logic once** and run the module's own reducer code as the
-prediction.
+rolls back. You can **write the logic once**: the module's own reducer code runs on the client as the prediction, in
+TypeScript, C# or Rust.
 
 [![CI](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml/badge.svg)](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml)
 ![Experimental](https://img.shields.io/badge/status-experimental-c2410c)
@@ -15,6 +15,8 @@ prediction.
 ![SpacetimeDB 2.11](https://img.shields.io/badge/SpacetimeDB-2.11-e8730c)
 ![TypeScript](https://img.shields.io/badge/TypeScript-client-3178c6)
 ![React hooks](https://img.shields.io/badge/React-hooks-149eca)
+![C#](https://img.shields.io/badge/C%23-Unity%20%C2%B7%20Godot-512bd4)
+![Rust](https://img.shields.io/badge/Rust-Bevy-b7410e)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 <picture>
@@ -26,13 +28,31 @@ prediction.
 
 ---
 
-| | Through a proxy adding 150 ms each way |
-|---|---|
-| Click to visible, with prediction | **~1 ms** |
-| Click to visible, without | ~310 ms |
-| Visible flicker when the server confirms | none (checked every frame) |
+## Where to go
 
-## Use it
+| I want… | Go to |
+|---|---|
+| **TypeScript** / React: `npm install @pogly/spacetimedb-predict` | [`client/`](client) · usage below |
+| **C#**: Unity, Godot or .NET (`netstandard2.1`, one file) | [`csharp/`](csharp) |
+| **Rust**: Bevy or any game loop | [`rust/`](rust) |
+| **Write it once**: modules whose reducer logic the client runs as its prediction | [`demo/module`](demo/module) (TS) · [`demo/csharp`](demo/csharp) · [`demo/rust`](demo/rust) |
+| **Numbers, design and limits** | [`docs/FINDINGS.md`](docs/FINDINGS.md) |
+
+Every language runs the same scenarios against a real module, through a proxy adding 150 ms each way:
+
+| | TypeScript | C# | Rust |
+|---|---|---|---|
+| Click to visible, predicted | ~1 ms | 0.2 ms | 0.5 ms |
+| Click to visible, waiting for the server | ~305 ms | ~306 ms | ~312 ms |
+| Prediction and real row ever shown together | never | never | never |
+| Tests | ✅ 8 behaviour (shared logic) + 4 browser | ✅ 9 hand-written + 5 shared logic | ✅ 8 hand-written + 5 shared logic |
+
+C# and Rust are tested with console clients driving a frame loop, **not yet inside Unity, Godot or Bevy**.
+
+Games get row events on the **predicted** view (inserted / updated / deleted, and **replaced**: "this predicted row
+is now the real one", so a spawned GameObject or Bevy entity is re-keyed instead of despawned and respawned).
+
+## Use it (TypeScript)
 
 ```bash
 npm install @pogly/spacetimedb-predict
@@ -99,12 +119,14 @@ Details, numbers, limits and what it means for Pogly: [docs/FINDINGS.md](docs/FI
 ## Layout
 
 ```
-client/src/index.ts     the prediction layer (framework-agnostic)
-client/src/react.ts     usePredicted, usePredictedCall
-client/src/shim.ts      shimDb: ctx.db over a prediction draft, for shared reducer logic
-demo/module/            a TypeScript module (task list) whose logic.ts the page shares
-demo/web/               the React demo page, served by the module at /route/
-tests/                  behaviour tests, browser tests, a latency proxy, a benchmark
+client/src/             TypeScript: the prediction layer, React hooks, shimDb
+csharp/                 C#: SpacetimeDB.Predict (netstandard2.1) + console tests
+rust/                   Rust: the spacetimedb-predict crate + console tests
+demo/module/            the TypeScript demo module (task list); its logic.ts is shared with the web page
+demo/csharp/, demo/rust/   the same module in C# and Rust, with logic shared with their clients
+demo/web/               the React demo page, served by the TS module at /route/
+tests/                  TS behaviour + browser tests, the latency proxy, a benchmark
+scripts/                test-cs.sh, test-rs.sh: publish, start the proxy, run the C# / Rust suites
 ```
 
 ```bash

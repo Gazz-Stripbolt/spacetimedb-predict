@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <!-- The generated bindings are a separate concern; don't fail the build on their warnings. -->
+    <NoWarn>$(NoWarn);CS8618;CS8625</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SpacetimeDB.ClientSDK" Version="2.11.*" />
+    <ProjectReference Include="../SpacetimeDB.Predict/SpacetimeDB.Predict.csproj" />
+  </ItemGroup>
+
+  <!-- Write it once: the C# module's reducer logic, compiled into the client as well. -->
+  <ItemGroup>
+    <Compile Include="../../demo/csharp/logic/TaskLogic.cs" Link="TaskLogic.cs" />
+  </ItemGroup>
+
+</Project>

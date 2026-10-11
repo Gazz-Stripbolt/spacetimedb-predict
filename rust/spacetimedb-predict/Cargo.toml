@@ -1,0 +1,10 @@
+[package]
+name = "spacetimedb-predict"
+version = "0.1.0"
+edition = "2021"
+description = "Optimistic updates / client-side prediction for SpacetimeDB Rust clients (Bevy or any game loop)."
+license = "MIT"
+repository = "https://github.com/Gazz-Stripbolt/spacetimedb-predict"
+
+[dependencies]
+spacetimedb-sdk = "2.11"

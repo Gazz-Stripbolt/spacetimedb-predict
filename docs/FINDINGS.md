@@ -65,8 +65,8 @@ predictions' own work.
 
 ## Limits
 
-- **Shared logic needs a TypeScript module.** Rust and C# modules (Pogly's is C#) can still use the layer, with
-  hand-written predictions, usually a few lines each.
+- **Shared logic needs the client and module in the same language** (TS page + TS module, Unity + C# module, Bevy +
+  Rust module). Otherwise predictions are hand-written, usually a few lines each.
 - **The React key of a predicted insert changes on confirmation** (temp id → real id), so that one row remounts.
   Reducers don't return the ids they assigned, so the layer can't map them. A client-generated id column (or a
   UUID primary key) avoids it.
@@ -84,6 +84,32 @@ Discrete actions wait a round trip today: show/hide (`UpdateElementTransparency`
 group/ungroup, text edits. Each waits one round trip to Maincloud: tens of milliseconds nearby, more from far
 away (not measured here). Hand-written predictions for 3–4 of those would make them instant. It's worth a small trial, not a
 rewrite, and Pogly's own element store would need to read from the layer.
+
+## C# (Unity, Godot) and Rust (Bevy)
+
+Both ports behave like the TypeScript one and pass the same scenarios, plus a shared-logic suite against a module in
+their own language ([`csharp/`](../csharp), [`rust/`](../rust)).
+
+- **The SDK ordering holds in both.** On a reducer result, the C# SDK (inside `FrameTick`) and the Rust SDK (inside
+  `frame_tick`) apply the caller's transaction to the cache first, then raise the call's completion. Flushing the
+  predictor after the tick is therefore flicker-free with no special scheduling.
+- **Settling differs.** Rust's generated API has a per-call callback (`toggle_task_then(args, |ctx, result| ...)`),
+  so each call settles exactly. C#'s has none: reducer events (`OnToggleTask`) fire only for this client's own calls,
+  in order, so the predictor settles the oldest pending call of that reducer (one wiring line per reducer). A reducer
+  that's also called without a prediction would settle a predicted call early.
+- **Games want row events, not just "something changed".** `Flush()` / `flush()` reports inserted / updated /
+  deleted rows of the *predicted* view, so a game spawns and despawns from what the player sees.
+- **Replaced.** When a predicted insert is confirmed, both ports pair the temporary row with the real row the
+  confirming transaction inserted (C#: the same `ReducerEvent` instance reaches the table callbacks and the reducer
+  event; Rust: the reducer event's timestamp) and report "temp → real" instead of a delete and an insert. The
+  GameObject or entity keeps living and just gets the real id.
+- **Write it once** works the same way in all three: the logic is written against a small interface (`ITasks`,
+  `Tasks`, the TS `Ctx`), the module implements it over its tables and the client over the prediction draft. The
+  demo's `move_task` computes a float between neighbours and the client's prediction matched the server's value
+  bit for bit, so nothing jumps on confirmation.
+- **Not tested inside the engines.** The tests drive a frame loop from .NET and Rust console clients. The C# library
+  targets `netstandard2.1` and uses no threads, async or reflection; the Rust crate has no async and no background
+  work. Building the Rust SDK needs OpenSSL headers (`native-tls`).
 
 ## Recommendation
 

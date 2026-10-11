@@ -3,3 +3,6 @@ dist/
 *.wasm
 spacetime.local.json
 demo/module/src/page.gen.ts
+bin/
+obj/
+target/

@@ -1,0 +1,12 @@
+[package]
+name = "predict_demo_rs"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+spacetimedb = "2.11.*"
+task_logic = { path = "../logic" }
+log = "0.4"
