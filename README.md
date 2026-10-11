@@ -9,7 +9,9 @@ reply comes back, then the server's real rows take over without a flicker. If th
 rolls back. With a TypeScript module you can **write the logic once** and run the module's own reducer code as the
 prediction.
 
+[![CI](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml/badge.svg)](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml)
 ![Experimental](https://img.shields.io/badge/status-experimental-c2410c)
+[![npm](https://img.shields.io/npm/v/@pogly/spacetimedb-predict?label=npm%20%40pogly%2Fspacetimedb-predict&color=cb3837)](https://www.npmjs.com/package/@pogly/spacetimedb-predict)
 ![SpacetimeDB 2.11](https://img.shields.io/badge/SpacetimeDB-2.11-e8730c)
 ![TypeScript](https://img.shields.io/badge/TypeScript-client-3178c6)
 ![React hooks](https://img.shields.io/badge/React-hooks-149eca)
@@ -31,6 +33,10 @@ prediction.
 | Visible flicker when the server confirms | none (checked every frame) |
 
 ## Use it
+
+```bash
+npm install @pogly/spacetimedb-predict
+```
 
 ```ts
 import { predict } from '@pogly/spacetimedb-predict';

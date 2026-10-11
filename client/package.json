@@ -1,15 +1,28 @@
 {
   "name": "@pogly/spacetimedb-predict",
-  "version": "0.0.1",
-  "private": true,
-  "description": "Optimistic updates / client-side prediction for SpacetimeDB clients: predictions layered over the client cache, rebased on every server change, rolled back on errors. Experimental.",
+  "version": "0.1.0",
+  "description": "Optimistic updates / client-side prediction for SpacetimeDB clients: predictions layered over the client cache, rebased on every server change, rolled back when the server says no. React hooks, and a ctx.db shim to run a TS module's own reducer logic as the prediction. Experimental.",
   "license": "MIT",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./react": "./src/react.ts",
-    "./shim": "./src/shim.ts"
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./react": { "types": "./dist/react.d.ts", "default": "./dist/react.js" },
+    "./shim": { "types": "./dist/shim.d.ts", "default": "./dist/shim.js" }
   },
-  "peerDependencies": { "react": ">=18", "spacetimedb": "2.11.*" },
-  "peerDependenciesMeta": { "react": { "optional": true } }
+  "files": ["dist", "README.md", "CHANGELOG.md", "LICENSE"],
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "prepack": "npm run build"
+  },
+  "keywords": ["spacetimedb", "optimistic-updates", "client-side-prediction", "react", "realtime", "multiplayer"],
+  "repository": { "type": "git", "url": "git+https://github.com/Gazz-Stripbolt/spacetimedb-predict.git", "directory": "client" },
+  "homepage": "https://github.com/Gazz-Stripbolt/spacetimedb-predict/tree/main/client#readme",
+  "bugs": { "url": "https://github.com/Gazz-Stripbolt/spacetimedb-predict/issues" },
+  "peerDependencies": { "react": ">=18" },
+  "peerDependenciesMeta": { "react": { "optional": true } },
+  "devDependencies": { "@types/react": "18.3.12", "react": "18.3.1", "typescript": "^5.9.0" },
+  "publishConfig": { "access": "public" }
 }

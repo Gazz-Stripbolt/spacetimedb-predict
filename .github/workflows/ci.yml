@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: TypeScript
+        run: |
+          npm run build:web
+          npm run typecheck
+      - name: Package contents
+        working-directory: client
+        run: npm pack --dry-run
+
+  e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Install SpacetimeDB CLI
+        run: |
+          curl -sSf https://install.spacetimedb.com | sh -s -- --yes
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Start SpacetimeDB
+        run: |
+          nohup spacetime start --in-memory --listen-addr 127.0.0.1:3000 --non-interactive > server.log 2>&1 &
+          for i in $(seq 60); do curl -sf -o /dev/null http://127.0.0.1:3000/v1/ping && break; sleep 1; done
+      - run: npm run build:web
+      - name: Publish the demo module
+        run: spacetime publish -s local -y predict -p demo/module --delete-data
+      - name: Behaviour tests (through a +150 ms proxy)
+        run: npx tsx tests/predict.test.mts 2>&1 | grep -v 'INFO Connecting'
+      - name: Browser tests
+        run: |
+          spacetime publish -s local -y predict -p demo/module --delete-data
+          npx tsx tests/browser.test.mts 2>&1 | grep -v 'INFO Connecting'
+      - name: Benchmark (overlay rebuild cost)
+        run: npx tsx tests/bench.mts
+      - name: Server log
+        if: failure()
+        run: tail -n 200 server.log || true

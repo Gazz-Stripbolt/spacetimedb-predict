@@ -4,7 +4,7 @@
   "type": "module",
   "workspaces": ["client", "demo/module"],
   "scripts": {
-    "build:web": "node demo/web/build.mjs",
+    "build:web": "npm run build -w client && node demo/web/build.mjs",
     "typecheck": "tsc --noEmit -p client && tsc --noEmit -p demo/module && tsc --noEmit -p demo/web"
   },
   "devDependencies": {

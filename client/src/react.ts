@@ -12,7 +12,7 @@
  * ```
  */
 import { useCallback, useRef, useSyncExternalStore } from 'react';
-import type { Draft, Predictor, CallOptions } from './index';
+import type { Draft, Predictor, CallOptions } from './index.js';
 
 /** The predicted rows of one table; re-renders when they change. */
 export function usePredicted<T extends Record<string, unknown>, K extends keyof T & string>(p: Predictor<T>, table: K): readonly T[K][] {

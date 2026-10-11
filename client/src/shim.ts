@@ -11,7 +11,7 @@
  * `ctx.random`. Write the shared logic so those checks happen in the module's wrapper, or accept
  * that the prediction is optimistic and the server may still refuse (which rolls it back).
  */
-import type { Draft, DraftTable } from './index';
+import type { Draft, DraftTable } from './index.js';
 
 /** Accessors for one table: unique columns (by field name) and btree indexes (by accessor name). */
 export interface ShimTableSpec<Row> {
