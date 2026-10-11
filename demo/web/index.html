@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spacetime Predict</title>
+<style>
+:root {
+  --bg: #f6f5f2; --panel: #ffffff; --fg: #1d1c1a; --muted: #6b6862; --line: #dedad2;
+  --accent: #e8730c; --accent-fg: #ffffff; --ok: #1f9d55; --bad: #b91c1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121316; --panel: #1b1d21; --fg: #ecebe8; --muted: #9a978f; --line: #2d3036; --accent: #ff8a2a; --accent-fg: #1b1206; --ok: #3ddc84; --bad: #f87171; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+button, input { font: inherit; color: inherit; }
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--panel); }
+header h1 { font-size: 17px; margin: 0; font-weight: 650; }
+.muted { color: var(--muted); font-size: 13px; }
+#last { font-variant-numeric: tabular-nums; }
+.switch { display: flex; align-items: center; gap: 6px; font-weight: 600; }
+.switch input { accent-color: var(--accent); width: 18px; height: 18px; }
+main { max-width: 640px; margin: 24px auto; padding: 0 16px; }
+form { display: flex; gap: 8px; margin-bottom: 14px; }
+form input { flex: 1; min-width: 0; border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 8px 12px; }
+.btn { border: 1px solid var(--line); background: var(--panel); padding: 8px 16px; border-radius: 999px; cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+li { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; transition: opacity 0.15s; }
+li.pending { opacity: 0.55; border-style: dashed; }
+li.done .title { text-decoration: line-through; color: var(--muted); }
+li input { accent-color: var(--accent); width: 17px; height: 17px; }
+.title { flex: 1; overflow-wrap: anywhere; cursor: text; }
+.who { font-size: 12px; color: var(--muted); }
+.x { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 16px; padding: 0 4px; }
+.x:disabled { opacity: 0.3; cursor: default; }
+footer { max-width: 640px; margin: 16px auto; padding: 0 16px; }
+#toast { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 8px; opacity: 0; pointer-events: none; transition: 0.15s; }
+#toast.show { opacity: 1; }
+#status { padding: 20px; }
+</style>
+</head>
+<body>
+<div id="status">connecting…</div>
+<div id="root"></div>
+<script type="module">/*BUNDLE*/</script>
+</body>
+</html>

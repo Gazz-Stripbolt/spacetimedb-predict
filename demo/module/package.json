@@ -1,0 +1,1 @@
+{"name":"predict-demo-module","version":"0.0.1","private":true,"type":"module","dependencies":{"spacetimedb":"2.11.*"},"devDependencies":{"typescript":"^5.9.0"}}

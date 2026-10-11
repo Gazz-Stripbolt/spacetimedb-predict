@@ -1,0 +1,23 @@
+{
+  "name": "spacetimedb-predict-repo",
+  "private": true,
+  "type": "module",
+  "workspaces": ["client", "demo/module"],
+  "scripts": {
+    "build:web": "node demo/web/build.mjs",
+    "typecheck": "tsc --noEmit -p client && tsc --noEmit -p demo/module && tsc --noEmit -p demo/web"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "esbuild": "^0.25.0",
+    "playwright": "1.63.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "spacetimedb": "2.11.*"
+  }
+}

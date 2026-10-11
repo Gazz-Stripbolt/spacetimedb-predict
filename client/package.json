@@ -1,0 +1,15 @@
+{
+  "name": "@pogly/spacetimedb-predict",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Optimistic updates / client-side prediction for SpacetimeDB clients: predictions layered over the client cache, rebased on every server change, rolled back on errors. Experimental.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/react.ts",
+    "./shim": "./src/shim.ts"
+  },
+  "peerDependencies": { "react": ">=18", "spacetimedb": "2.11.*" },
+  "peerDependenciesMeta": { "react": { "optional": true } }
+}
