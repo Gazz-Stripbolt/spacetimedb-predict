@@ -12,7 +12,7 @@ TypeScript, C# or Rust.
 [![CI](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml/badge.svg)](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml)
 ![Experimental](https://img.shields.io/badge/status-experimental-c2410c)
 [![npm](https://img.shields.io/npm/v/@pogly/spacetimedb-predict?label=npm%20%40pogly%2Fspacetimedb-predict&color=cb3837)](https://www.npmjs.com/package/@pogly/spacetimedb-predict)
-![SpacetimeDB 2.11](https://img.shields.io/badge/SpacetimeDB-2.11-e8730c)
+![SpacetimeDB 2.12](https://img.shields.io/badge/SpacetimeDB-2.12-e8730c)
 ![TypeScript](https://img.shields.io/badge/TypeScript-client-3178c6)
 ![React hooks](https://img.shields.io/badge/React-hooks-149eca)
 ![C#](https://img.shields.io/badge/C%23-Unity%20%C2%B7%20Godot-512bd4)
