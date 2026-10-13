@@ -7,6 +7,6 @@ edition = "2024"
 crate-type = ["cdylib"]
 
 [dependencies]
-spacetimedb = "2.11.*"
+spacetimedb = "2.12.*"
 task_logic = { path = "../logic" }
 log = "0.4"

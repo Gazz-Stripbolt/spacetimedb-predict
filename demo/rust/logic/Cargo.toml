@@ -5,4 +5,4 @@ edition = "2024"
 description = "The demo's reducer logic, shared by the Rust module and Rust clients (as their prediction)."
 
 [dependencies]
-spacetimedb-lib = "2.11"
+spacetimedb-lib = "2.12"

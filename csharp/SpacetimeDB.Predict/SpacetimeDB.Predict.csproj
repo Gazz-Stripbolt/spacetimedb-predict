@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SpacetimeDB.ClientSDK" Version="2.11.*" />
+    <PackageReference Include="SpacetimeDB.ClientSDK" Version="2.12.*" />
   </ItemGroup>
 
 </Project>
