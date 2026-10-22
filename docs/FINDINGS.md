@@ -1,6 +1,6 @@
-# Findings: client-side prediction for SpacetimeDB (experiment)
+# Findings: client-side prediction for Spacetime (experiment)
 
-What we tried, what we measured and what we'd recommend. SpacetimeDB 2.11, TypeScript SDK.
+What we tried, what we measured and what we'd recommend. Spacetime 2.11, TypeScript SDK.
 
 ## The question
 

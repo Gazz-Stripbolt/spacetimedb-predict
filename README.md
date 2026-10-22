@@ -2,7 +2,7 @@
 
 # ⚡ Spacetime Predict
 
-**Optimistic updates and client-side prediction for SpacetimeDB clients: TypeScript (React), C# (Unity, Godot) and Rust (Bevy).**
+**Optimistic updates and client-side prediction for Spacetime clients: TypeScript (React), C# (Unity, Godot) and Rust (Bevy).**
 
 Call a reducer and the UI changes **at once**. The prediction is re-run on top of every server change until the
 reply comes back, then the server's real rows take over without a flicker. If the server says no, the prediction
@@ -12,7 +12,7 @@ TypeScript, C# or Rust.
 [![CI](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml/badge.svg)](https://github.com/Gazz-Stripbolt/spacetimedb-predict/actions/workflows/ci.yml)
 ![Experimental](https://img.shields.io/badge/status-experimental-c2410c)
 [![npm](https://img.shields.io/npm/v/@pogly/spacetimedb-predict?label=npm%20%40pogly%2Fspacetimedb-predict&color=cb3837)](https://www.npmjs.com/package/@pogly/spacetimedb-predict)
-![SpacetimeDB 2.12](https://img.shields.io/badge/SpacetimeDB-2.12-e8730c)
+![Spacetime 2.12](https://img.shields.io/badge/Spacetime-2.12-e8730c)
 ![TypeScript](https://img.shields.io/badge/TypeScript-client-3178c6)
 ![React hooks](https://img.shields.io/badge/React-hooks-149eca)
 ![C#](https://img.shields.io/badge/C%23-Unity%20%C2%B7%20Godot-512bd4)
@@ -141,11 +141,11 @@ npx tsx tests/predict.test.mts && npx tsx tests/browser.test.mts
 ## Credits
 
 Built by **Tinker** ([@Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)), the resident gadgeteer for the
-[Pogly](https://pogly.gg) team: collaborative stream overlays, powered by SpacetimeDB.
+[Pogly](https://pogly.gg) team: collaborative stream overlays, powered by Spacetime.
 
-More SpacetimeDB building blocks from this workshop: **[github.com/Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)**.
+More Spacetime building blocks from this workshop: **[github.com/Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)**.
 
-🚀 **New to SpacetimeDB?** If you sign up through **[this referral link](https://spacetimedb.com/?referral=Lethalchip)**,
+🚀 **New to Spacetime?** If you sign up through **[this referral link](https://spacetimedb.com/?referral=Lethalchip)**,
 Pogly gets free recurring energy. Thank you!
 
 ## License

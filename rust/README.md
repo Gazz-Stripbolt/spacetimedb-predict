@@ -1,6 +1,6 @@
 # spacetimedb-predict for Rust (Bevy or any game loop)
 
-Optimistic updates / client-side prediction for SpacetimeDB Rust clients, with the same behaviour as the TypeScript
+Optimistic updates / client-side prediction for Spacetime Rust clients, with the same behaviour as the TypeScript
 package: a call's predicted effect shows at once, is re-run on top of every server change until the reply comes back
 (rebase), and is replaced by the server's real rows without a flicker. Refused or timed-out calls roll back. Source:
 [`spacetimedb-predict/src/lib.rs`](spacetimedb-predict/src/lib.rs) · tests: [`tests-client`](tests-client/src/main.rs).

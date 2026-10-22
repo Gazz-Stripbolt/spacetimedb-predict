@@ -1,6 +1,6 @@
 # @pogly/spacetimedb-predict
 
-Optimistic updates and client-side prediction for SpacetimeDB clients (experimental). Call a reducer and the UI
+Optimistic updates and client-side prediction for Spacetime clients (experimental). Call a reducer and the UI
 changes at once; the prediction is re-run on every server change until the reply comes back, then the real rows take
 over without a flicker. Refused or timed-out calls roll back.
 

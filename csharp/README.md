@@ -1,6 +1,6 @@
 # spacetimedb-predict for C# (Unity, Godot, .NET)
 
-Optimistic updates / client-side prediction for SpacetimeDB's C# client SDK: the C# twin of
+Optimistic updates / client-side prediction for Spacetime's C# client SDK: the C# twin of
 [`client/`](../client). Call a reducer and the predicted rows change at once. Pending predictions are re-run on top
 of every server change (rebase), dropped when the reducer's result arrives, and rolled back if the server says no.
 Source: [`SpacetimeDB.Predict/Predictor.cs`](SpacetimeDB.Predict/Predictor.cs), one file, `netstandard2.1`.
@@ -12,7 +12,7 @@ Source: [`SpacetimeDB.Predict/Predictor.cs`](SpacetimeDB.Predict/Predictor.cs), 
 
 ## Install
 
-- **Unity:** copy `SpacetimeDB.Predict/Predictor.cs` into your project, next to the SpacetimeDB SDK package.
+- **Unity:** copy `SpacetimeDB.Predict/Predictor.cs` into your project, next to the Spacetime SDK package.
 - **Godot / .NET:** reference `SpacetimeDB.Predict/SpacetimeDB.Predict.csproj`, or copy the file.
 
 ## Use it
@@ -91,7 +91,7 @@ prediction draft on the client. The demo does exactly this:
 ([`demo/csharp/module`](../demo/csharp/module)) *and* into the test client.
 
 ```csharp
-// TaskLogic.cs, shared: plain C# (netstandard2.1-friendly), no SpacetimeDB server or client types beyond Identity.
+// TaskLogic.cs, shared: plain C# (netstandard2.1-friendly), no Spacetime server or client types beyond Identity.
 public interface ITasks
 {
     Identity Sender { get; }
