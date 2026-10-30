@@ -11,7 +11,7 @@ it straight into spawn / update / despawn / re-key.
 
 ```toml
 [dependencies]
-spacetimedb-sdk = "2.12"
+spacetimedb-sdk = "2.14"
 spacetimedb-predict = { git = "https://github.com/Gazz-Stripbolt/spacetimedb-predict" }
 ```
 
