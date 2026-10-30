@@ -38,7 +38,7 @@ jobs:
         run: |
           curl -sSf https://install.spacetimedb.com | sh -s -- --yes
           # The installer gives the latest GitHub release, which can lag the crates/npm/NuGet release.
-          "$HOME/.local/bin/spacetime" version install 2.12.0 && "$HOME/.local/bin/spacetime" version use 2.12.0
+          "$HOME/.local/bin/spacetime" version install 2.14.0 && "$HOME/.local/bin/spacetime" version use 2.14.0
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Start SpacetimeDB
         run: |
@@ -79,7 +79,7 @@ jobs:
         run: |
           curl -sSf https://install.spacetimedb.com | sh -s -- --yes
           # The installer gives the latest GitHub release, which can lag the crates/npm/NuGet release.
-          "$HOME/.local/bin/spacetime" version install 2.12.0 && "$HOME/.local/bin/spacetime" version use 2.12.0
+          "$HOME/.local/bin/spacetime" version install 2.14.0 && "$HOME/.local/bin/spacetime" version use 2.14.0
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Start SpacetimeDB
         run: |
@@ -122,7 +122,7 @@ jobs:
         run: |
           curl -sSf https://install.spacetimedb.com | sh -s -- --yes
           # The installer gives the latest GitHub release, which can lag the crates/npm/NuGet release.
-          "$HOME/.local/bin/spacetime" version install 2.12.0 && "$HOME/.local/bin/spacetime" version use 2.12.0
+          "$HOME/.local/bin/spacetime" version install 2.14.0 && "$HOME/.local/bin/spacetime" version use 2.14.0
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Start SpacetimeDB
         run: |

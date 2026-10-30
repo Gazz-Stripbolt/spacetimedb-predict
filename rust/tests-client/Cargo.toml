@@ -5,6 +5,6 @@ edition = "2021"
 publish = false
 
 [dependencies]
-spacetimedb-sdk = "2.12"
+spacetimedb-sdk = "2.14"
 spacetimedb-predict = { path = "../spacetimedb-predict" }
 task_logic = { path = "../../demo/rust/logic" }
